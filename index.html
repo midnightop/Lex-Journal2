@@ -3,164 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calcutta Law Journal | Modern Legal Resource</title>
+    <title>Calcutta Law Journal</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;500;600;700&display=swap');
-        body { font-family: 'Inter', sans-serif; }
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body { font-family: 'Inter', sans-serif; background-color: #fcfdfe; }
         .font-serif { font-family: 'Playfair Display', serif; }
-        .glass { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(12px); }
-        .hero-grad { background: radial-gradient(circle at top right, #e0f2fe, #ffffff); }
-        .card-zoom:hover img { transform: scale(1.05); }
+        
+        /* Matching the screenshot's soft blue/pink gradient background */
+        .hero-bg {
+            background: radial-gradient(circle at top, #e0f2fe 0%, #ffffff 50%, #fdf2f8 100%);
+        }
+
+        .btn-blue {
+            background: linear-gradient(90deg, #00a8ff, #00d2ff);
+        }
+
+        .btn-pink {
+            background: linear-gradient(90deg, #a29bfe, #fd79a8);
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
         .hidden { display: none; }
-        .modal-active { overflow: hidden; }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
+
+        /* Animation for page switching */
+        .fade-in { animation: fadeIn 0.3s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-900">
+<body>
 
-    <nav class="sticky top-0 z-50 glass border-b border-gray-100 px-6 py-4 flex justify-between items-center">
-        <div onclick="showSection('home')" class="text-2xl font-bold text-blue-600 cursor-pointer tracking-tighter">CLJ</div>
-        <div class="flex gap-4 md:gap-8 text-xs font-bold uppercase tracking-widest text-gray-500">
-            <span onclick="showSection('bare')" class="cursor-pointer hover:text-blue-600 transition">Bare Acts</span>
-            <span onclick="showSection('cases')" class="cursor-pointer hover:text-pink-500 transition">Case Laws</span>
-            <span onclick="showSection('about')" class="cursor-pointer hover:text-gray-900 transition">About</span>
+    <nav class="sticky top-0 z-50 glass-nav px-6 py-4 flex justify-between items-center">
+        <div onclick="showPage('home')" class="flex items-center gap-2 cursor-pointer">
+            <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white shadow-sm">
+                <i class="fa-solid fa-scale-balanced text-xs"></i>
+            </div>
+            <span class="font-bold text-gray-800 tracking-tighter text-xl">CLJ</span>
+        </div>
+        
+        <div class="flex gap-4 items-center">
+            <button onclick="showPage('home')" class="text-xs font-bold uppercase tracking-widest text-blue-600 bg-blue-50 px-3 py-1 rounded-full">
+                <i class="fa-solid fa-house mr-1"></i> Home
+            </button>
+            <i class="fa-solid fa-bars text-gray-600 text-lg"></i>
         </div>
     </nav>
 
-    <div id="home-section" class="content-section">
-        <header class="hero-grad pt-16 pb-12 px-6 text-center">
-            <h1 class="text-5xl font-serif font-bold mb-4">Calcutta Law Journal</h1>
-            <p class="text-gray-500 italic max-w-sm mx-auto mb-10">Simplifying the complex world of Indian Statutes and Landmark Judgments.</p>
+    <div id="home-page" class="page-content fade-in">
+        <section class="hero-bg pt-12 pb-16 px-8 text-center">
+            <div class="inline-block bg-white/60 border border-blue-100 px-4 py-1 rounded-full mb-8">
+                <p class="text-[10px] font-bold text-blue-500 uppercase tracking-widest">
+                    <span class="inline-block w-2 h-2 bg-blue-400 rounded-full mr-2"></span>India's Simplest Law Resource
+                </p>
+            </div>
+
+            <h1 class="text-5xl font-serif font-bold text-blue-600 mb-2">Calcutta</h1>
+            <h1 class="text-5xl font-serif font-bold text-gray-800 mb-6 tracking-tight">Law Journal</h1>
+
+            <p class="text-gray-700 italic font-medium text-lg mb-4">"Understanding Bare Acts and Case Laws in Simple Words"</p>
             
+            <p class="text-gray-400 text-sm leading-relaxed max-w-sm mx-auto mb-10">
+                Complex legal language, decoded. From the Constitution to landmark Supreme Court judgments — explained clearly for students and citizens.
+            </p>
+
             <div class="flex flex-col gap-4 max-w-xs mx-auto">
-                <button onclick="showSection('bare')" class="bg-blue-600 text-white py-4 rounded-2xl font-bold shadow-lg">Browse Bare Acts</button>
-                <button onclick="showSection('cases')" class="bg-pink-500 text-white py-4 rounded-2xl font-bold shadow-lg">Read Case Laws</button>
-            </div>
-        </header>
-
-        <section class="p-6 max-w-5xl mx-auto grid md:grid-cols-2 gap-6">
-            <div onclick="openModal('modal-bare')" class="bg-white rounded-3xl overflow-hidden shadow-sm border cursor-pointer card-zoom transition">
-                <div class="h-40 bg-gray-200 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800" class="w-full h-full object-cover transition duration-500">
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-bold mb-2">The Bare Acts</h3>
-                    <p class="text-sm text-gray-500 mb-4">Click to view the simplified breakdown of major Indian laws like IPC, CrPC, and the Constitution.</p>
-                    <div class="flex gap-2">
-                        <span class="bg-blue-50 text-blue-600 text-[10px] px-2 py-1 rounded font-bold">CONSTITUTION</span>
-                        <span class="bg-blue-50 text-blue-600 text-[10px] px-2 py-1 rounded font-bold">IPC</span>
-                    </div>
-                </div>
+                <button onclick="showPage('bare')" class="btn-blue text-white py-4 rounded-3xl font-bold shadow-lg shadow-blue-100 active:scale-95 transition">Explore Bare Acts</button>
+                <button onclick="showPage('cases')" class="btn-pink text-white py-4 rounded-3xl font-bold shadow-lg shadow-pink-100 active:scale-95 transition">Read Case Laws</button>
             </div>
 
-            <div onclick="openModal('modal-case')" class="bg-white rounded-3xl overflow-hidden shadow-sm border cursor-pointer card-zoom transition">
-                <div class="h-40 bg-gray-200 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?w=800" class="w-full h-full object-cover transition duration-500">
+            <div class="grid grid-cols-2 gap-y-8 mt-16 max-w-sm mx-auto">
+                <div>
+                    <p class="text-2xl font-bold text-blue-400">50+</p>
+                    <p class="text-[10px] font-bold text-gray-400 uppercase">Bare Acts Covered</p>
                 </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-bold mb-2">Case Law Summaries</h3>
-                    <p class="text-sm text-gray-500 mb-4">Landmark judgments from 1950 to 2026. Simplified facts, issues, and final verdicts.</p>
-                    <div class="flex gap-2">
-                        <span class="bg-pink-50 text-pink-600 text-[10px] px-2 py-1 rounded font-bold">LANDMARK</span>
-                        <span class="bg-pink-50 text-pink-600 text-[10px] px-2 py-1 rounded font-bold">VERDICTS</span>
+                <div>
+                    <p class="text-2xl font-bold text-blue-400">100+</p>
+                    <p class="text-[10px] font-bold text-gray-400 uppercase">Case Summaries</p>
+                </div>
+                <div class="col-span-2">
+                    <p class="text-2xl font-bold text-blue-400">10k+</p>
+                    <p class="text-[10px] font-bold text-gray-400 uppercase">Students Helped</p>
+                </div>
+            </div>
+
+            <div class="mt-12 rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white max-w-sm mx-auto relative">
+                <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800" class="w-full h-56 object-cover">
+                <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent text-left">
+                    <p class="text-[10px] font-bold text-white uppercase opacity-80">Calcutta High Court • EST. 1862</p>
+                    <p class="text-xs text-white/70">West Bengal, India</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="p-8 bg-white mt-10 rounded-t-[3rem] shadow-inner">
+            <div class="inline-block bg-blue-50 text-blue-600 px-4 py-1 rounded-full text-[10px] font-bold mb-4">ABOUT THE AUTHOR</div>
+            <h2 class="text-3xl font-serif font-bold text-gray-800 mb-6">The person behind the journal</h2>
+            
+            <div class="bg-gray-50 p-8 rounded-[2.5rem] border border-gray-100">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center text-white text-xl">
+                        <i class="fa-solid fa-user-pen"></i>
                     </div>
+                    <div>
+                        <p class="font-bold text-gray-800">Reyansh</p>
+                        <p class="text-[10px] text-gray-500 font-bold uppercase">Sambhunath Law College</p>
+                    </div>
+                </div>
+                <p class="text-gray-600 italic leading-relaxed mb-6">
+                    "I started this journal because I struggled with the same thing every law student does — dense, inaccessible language in statutes and judgments. I want to make sure you see law clearly."
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-white border px-3 py-1 rounded-full text-[10px] font-bold text-gray-400">Constitutional Law</span>
+                    <span class="bg-white border px-3 py-1 rounded-full text-[10px] font-bold text-gray-400">Criminal Law</span>
                 </div>
             </div>
         </section>
     </div>
 
-    <div id="bare-section" class="content-section hidden p-6 max-w-3xl mx-auto space-y-6">
-        <h2 class="text-3xl font-serif font-bold mb-8">Bare Acts <span class="text-blue-600">Database</span></h2>
-        
-        <div class="bg-white p-6 rounded-3xl shadow-sm border">
-            <h3 class="text-xl font-bold">Constitution of India, 1950</h3>
-            <p class="text-gray-600 text-sm mt-3">The supreme law of India. It lays down the framework defining fundamental political principles, establishes the structure, procedures, powers, and duties of government institutions and sets out fundamental rights, directive principles and the duties of citizens.</p>
-        </div>
-
-        <div class="bg-white p-6 rounded-3xl shadow-sm border">
-            <h3 class="text-xl font-bold">Indian Penal Code, 1860</h3>
-            <p class="text-gray-600 text-sm mt-3">The official criminal code of India. It is a comprehensive code intended to cover all substantive aspects of criminal law. Note: Currently being replaced by Bharatiya Nyaya Sanhita (BNS).</p>
-        </div>
-
-        <div class="bg-white p-6 rounded-3xl shadow-sm border">
-            <h3 class="text-xl font-bold">Indian Evidence Act, 1872</h3>
-            <p class="text-gray-600 text-sm mt-3">Governs the admissibility of evidence in Indian courts. It defines what facts are relevant and how they can be proved in a court of law.</p>
-        </div>
+    <div id="bare-page" class="page-content hidden fade-in p-8">
+        <h2 class="text-3xl font-serif font-bold mb-4">Indian <span class="text-blue-500">Bare Acts</span></h2>
+        <div class="space-y-4">
+            <div class="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm">
+                <h3 class="font-bold text-lg">Constitution of India</h3>
+                <p class="text-sm text-gray-500 mt-2">The supreme law of India, simplified for better understanding.</p>
+            </div>
+            </div>
     </div>
 
-    <div id="cases-section" class="content-section hidden p-6 max-w-3xl mx-auto space-y-6">
-        <h2 class="text-3xl font-serif font-bold mb-8">Landmark <span class="text-pink-600">Judgments</span></h2>
-        
-        <div class="bg-white p-6 rounded-3xl shadow-sm border border-l-8 border-l-pink-500">
-            <h3 class="text-xl font-bold">Kesavananda Bharati v. State of Kerala (1973)</h3>
-            <p class="text-gray-600 text-sm mt-2 font-medium">Issue: Can Parliament amend any part of the Constitution?</p>
-            <p class="text-gray-500 text-sm mt-2 italic">Verdict: Introduced the 'Basic Structure Doctrine'. Parliament cannot alter the essential features of the Constitution.</p>
-        </div>
-
-        <div class="bg-white p-6 rounded-3xl shadow-sm border border-l-8 border-l-blue-500">
-            <h3 class="text-xl font-bold">Maneka Gandhi v. Union of India (1978)</h3>
-            <p class="text-gray-600 text-sm mt-2 font-medium">Issue: Right to travel abroad under Article 21.</p>
-            <p class="text-gray-500 text-sm mt-2 italic">Verdict: Expanded 'Right to Life' to include 'Right to Live with Dignity'. Law must be just, fair, and reasonable.</p>
-        </div>
-    </div>
-
-    <div id="about-section" class="content-section hidden p-6 max-w-3xl mx-auto">
-        <div class="bg-white p-10 rounded-[40px] shadow-sm border text-center">
-            <div class="w-20 h-20 bg-blue-600 text-white rounded-3xl flex items-center justify-center text-3xl mx-auto mb-6">
-                <i class="fa-solid fa-user-tie"></i>
+    <div id="cases-page" class="page-content hidden fade-in p-8">
+        <h2 class="text-3xl font-serif font-bold mb-4">Landmark <span class="text-pink-500">Judgments</span></h2>
+        <div class="space-y-4">
+            <div class="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm">
+                <h3 class="font-bold text-lg">Kesavananda Bharati Case</h3>
+                <p class="text-sm text-gray-500 mt-2">The birth of the Basic Structure Doctrine explained.</p>
             </div>
-            <h2 class="text-3xl font-serif font-bold mb-2">Reyansh</h2>
-            <p class="text-blue-600 font-bold text-sm uppercase tracking-widest mb-6">Law Student | Sambhunath Law College</p>
-            
-            <div class="text-gray-600 text-lg leading-relaxed mb-8 italic">
-                "I started this journal because I struggled with the same thing every law student does — dense, inaccessible language in statutes and judgments. My goal is to make the law understandable for everyone, from students to common citizens."
             </div>
-
-            <div class="grid grid-cols-2 gap-4 text-xs font-bold text-gray-500">
-                <div class="bg-gray-50 p-4 rounded-2xl">CONSTITUTIONAL LAW</div>
-                <div class="bg-gray-50 p-4 rounded-2xl">CRIMINAL LAW</div>
-                <div class="bg-gray-50 p-4 rounded-2xl">LEGAL WRITING</div>
-                <div class="bg-gray-50 p-4 rounded-2xl">CIVIL PROCEDURE</div>
-            </div>
-        </div>
-    </div>
-
-    <div id="modal-overlay" onclick="closeModal()" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] hidden flex items-center justify-center p-6">
-        <div id="modal-bare" class="bg-white rounded-[40px] max-w-lg w-full p-8 hidden relative animate-pop">
-            <h2 class="text-2xl font-serif font-bold mb-4">Bare Acts Deep Dive</h2>
-            <p class="text-gray-600 text-sm leading-relaxed mb-6">Explore the full text of Indian Statutes. We have categorized over 2,000 sections into plain English summaries to help you prepare for exams or legal practice.</p>
-            <button onclick="showSection('bare'); closeModal();" class="w-full bg-blue-600 text-white py-3 rounded-2xl font-bold">View All Acts</button>
-        </div>
-
-        <div id="modal-case" class="bg-white rounded-[40px] max-w-lg w-full p-8 hidden relative animate-pop">
-            <h2 class="text-2xl font-serif font-bold mb-4">Judgment Analysis</h2>
-            <p class="text-gray-600 text-sm leading-relaxed mb-6">From Kesavananda Bharati to modern-day privacy rulings, get the context, the arguments, and the final impact of India's most important legal battles.</p>
-            <button onclick="showSection('cases'); closeModal();" class="w-full bg-pink-500 text-white py-3 rounded-2xl font-bold">View All Case Laws</button>
-        </div>
     </div>
 
     <script>
-        function showSection(id) {
-            document.querySelectorAll('.content-section').forEach(s => s.classList.add('hidden'));
-            document.getElementById(id + '-section').classList.remove('hidden');
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page-content').forEach(page => {
+                page.classList.add('hidden');
+            });
+            // Show the target page
+            document.getElementById(pageId + '-page').classList.remove('hidden');
+            // Scroll to top
             window.scrollTo(0, 0);
-        }
-
-        function openModal(modalId) {
-            document.getElementById('modal-overlay').classList.remove('hidden');
-            document.getElementById('modal-overlay').classList.add('flex');
-            document.getElementById(modalId).classList.remove('hidden');
-            document.body.classList.add('modal-active');
-        }
-
-        function closeModal() {
-            document.getElementById('modal-overlay').classList.add('hidden');
-            document.getElementById('modal-overlay').classList.remove('flex');
-            document.getElementById('modal-bare').classList.add('hidden');
-            document.getElementById('modal-case').classList.add('hidden');
-            document.body.classList.remove('modal-active');
         }
     </script>
 </body>
