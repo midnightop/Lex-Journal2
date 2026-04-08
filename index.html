@@ -22,51 +22,29 @@
   </div>
 </section>
 
-<section class="stats">
-  <div><h3>50+</h3><p>Acts</p></div>
-  <div><h3>100+</h3><p>Cases</p></div>
-  <div><h3>10+</h3><p>Topics</p></div>
-</section>
-
-<section class="cards">
-  <h2>Two pillars of Indian Law</h2>
-
-  <div class="card">
-    <h3>Bare Acts</h3>
-    <p>Explore IPC, CrPC, Evidence Act and more.</p>
-    <button>Browse Bare Acts</button>
-  </div>
-
-  <div class="card">
-    <h3>Case Laws</h3>
-    <p>Landmark and recent judgments simplified.</p>
-    <button>Explore Cases</button>
-  </div>
-</section>
-
 <section class="articles">
   <h2>Recent from the Journal</h2>
 
-  <div class="article">Article 1: Explained</div>
-  <div class="article">Kesavananda Case</div>
-  <div class="article">Privacy Case</div>
-</section>
-
-<section class="about">
-  <h2>The person behind the journal</h2>
-  <p>
-    I started this project to simplify law for everyone.
-  </p>
-
-  <div class="profile">
-    <h3>Reyansh</h3>
-    <p>Law Student</p>
+  <div class="article" onclick="openModal('kesavananda')">
+    <h3>Kesavananda Bharati Case</h3>
+    <p>Foundation of Basic Structure Doctrine in India.</p>
   </div>
+
+  <div class="article" onclick="openModal('privacy')">
+    <h3>Right to Privacy Case</h3>
+    <p>Declared privacy as a fundamental right.</p>
+  </div>
+
 </section>
 
-<footer>
-  <p>© 2026 Law Journal</p>
-</footer>
+<!-- MODAL -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">×</span>
+    <h2 id="modal-title"></h2>
+    <p id="modal-text"></p>
+  </div>
+</div>
 
 <script src="script.js"></script>
 </body>
