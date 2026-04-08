@@ -1,29 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Rey Law Journal</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Law Journal</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
 <header>
-  <img src="logo.png" class="logo">
-  <h1>Rey Law Journal</h1>
-  <a href="about.html" class="about-btn">About</a>
+  <h2 class="logo">LAW JOURNAL</h2>
 </header>
 
-<section class="container">
-  <div class="card" onclick="openPopup('journal')">📚 Journal</div>
-  <div class="card" onclick="openPopup('news')">📰 Legal News</div>
-  <div class="card" onclick="openPopup('constitution')">📜 Constitution</div>
-  <div class="card" onclick="openPopup('courts')">🏛️ Courts</div>
+<section class="hero">
+  <h1>Calcutta <span>Law Journal</span></h1>
+  <p>Understanding law should not be complicated.</p>
+
+  <div class="btn-group">
+    <button class="btn blue">Explore Bare Acts</button>
+    <button class="btn pink">Read Articles</button>
+  </div>
 </section>
 
-<div id="popup" class="popup">
-  <div class="popup-content" id="popupContent"></div>
-  <span onclick="closePopup()" class="close">×</span>
-</div>
+<section class="stats">
+  <div><h3>50+</h3><p>Acts</p></div>
+  <div><h3>100+</h3><p>Cases</p></div>
+  <div><h3>10+</h3><p>Topics</p></div>
+</section>
+
+<section class="cards">
+  <h2>Two pillars of Indian Law</h2>
+
+  <div class="card">
+    <h3>Bare Acts</h3>
+    <p>Explore IPC, CrPC, Evidence Act and more.</p>
+    <button>Browse Bare Acts</button>
+  </div>
+
+  <div class="card">
+    <h3>Case Laws</h3>
+    <p>Landmark and recent judgments simplified.</p>
+    <button>Explore Cases</button>
+  </div>
+</section>
+
+<section class="articles">
+  <h2>Recent from the Journal</h2>
+
+  <div class="article">Article 1: Explained</div>
+  <div class="article">Kesavananda Case</div>
+  <div class="article">Privacy Case</div>
+</section>
+
+<section class="about">
+  <h2>The person behind the journal</h2>
+  <p>
+    I started this project to simplify law for everyone.
+  </p>
+
+  <div class="profile">
+    <h3>Reyansh</h3>
+    <p>Law Student</p>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Law Journal</p>
+</footer>
 
 <script src="script.js"></script>
 </body>
