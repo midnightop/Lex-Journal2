@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Rey Law Journal</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <img src="logo.png" class="logo">
+  <h1>Rey Law Journal</h1>
+  <a href="about.html" class="about-btn">About</a>
+</header>
+
+<section class="container">
+  <div class="card" onclick="openPopup('journal')">📚 Journal</div>
+  <div class="card" onclick="openPopup('news')">📰 Legal News</div>
+  <div class="card" onclick="openPopup('constitution')">📜 Constitution</div>
+  <div class="card" onclick="openPopup('courts')">🏛️ Courts</div>
+</section>
+
+<div id="popup" class="popup">
+  <div class="popup-content" id="popupContent"></div>
+  <span onclick="closePopup()" class="close">×</span>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
